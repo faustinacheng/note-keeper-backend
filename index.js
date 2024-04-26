@@ -19,6 +19,6 @@ app.get("/", (req, res) => {
     res.json({ message: "API works" });
 });
 
-app.listen(5001, () => {
-    console.log("Server is running on port 5001");
+app.listen(8080, () => {
+    console.log("Server is running on port 8080");
 });
