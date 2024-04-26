@@ -10,7 +10,12 @@ const app = express();
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_DB_URI);
 
-app.use(cors()); // To globally tell server to use cors anytime a request is made to allow cross origin requests
+const corsOptions = {
+    origin: "https://keeper-fc.vercel.app",
+    credentials: true, //access-control-allow-credentials:true
+    optionSuccessStatus: 200,
+};
+app.use(cors(corsOptions)); // To globally tell server to use cors anytime a request is made to allow cross origin requests
 app.use(express.json()); // To parse incoming requests with JSON payloads. By default reads HTML
 // app.use("/notes", noteRoutes);
 
