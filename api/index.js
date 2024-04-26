@@ -15,6 +15,14 @@ app.use(express.json()); // To parse incoming requests with JSON payloads. By de
 // app.use("/notes", noteRoutes);
 
 app.get("/", (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Credentials", "true");
+    res.setHeader("Access-Control-Max-Age", "1800");
+    res.setHeader("Access-Control-Allow-Headers", "content-type");
+    res.setHeader(
+        "Access-Control-Allow-Methods",
+        "PUT, POST, GET, DELETE, PATCH, OPTIONS"
+    );
     res.json({ message: "API works" });
 });
 
@@ -73,6 +81,14 @@ app.post("/notes/", (req, res) => {
 
 // PATCH
 app.patch("/notes/:id", (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Credentials", "true");
+    res.setHeader("Access-Control-Max-Age", "1800");
+    res.setHeader("Access-Control-Allow-Headers", "content-type");
+    res.setHeader(
+        "Access-Control-Allow-Methods",
+        "PUT, POST, GET, DELETE, PATCH, OPTIONS"
+    );
     const id = req.params.id;
     Note.updateOne({ _id: id }, { $set: req.body })
         .exec()
@@ -88,6 +104,14 @@ app.patch("/notes/:id", (req, res) => {
 
 // DELETE
 app.delete("/notes/:id", (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Credentials", "true");
+    res.setHeader("Access-Control-Max-Age", "1800");
+    res.setHeader("Access-Control-Allow-Headers", "content-type");
+    res.setHeader(
+        "Access-Control-Allow-Methods",
+        "PUT, POST, GET, DELETE, PATCH, OPTIONS"
+    );
     const id = req.params.id;
     Note.deleteOne({ _id: id })
         .exec()
