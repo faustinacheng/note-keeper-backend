@@ -5,17 +5,6 @@ const Note = require("../models/note");
 const router = express.Router(); // So we can directly manipulate data using controller functions
 
 // GET
-/**
- * @openapi
- * /:
- *   get:
- *     description: Welcome to swagger-jsdoc!
- *     responses:
- *       200:
- *         description: Gets the notes for a user.
- *       500:
- *         description: Internal server error.
- */
 router.get("/:id", (req, res) => {
     Note.find({ uid: req.params.id }) // Find all notes
         .exec()
@@ -40,7 +29,7 @@ router.post("/", (req, res) => {
 
     note.save() // Save note to database
         .then((result) => {
-            console.log(result);
+            // console.log(result);
             res.status(201).json({
                 // 201 status code means resource was successfully created
                 message: "Note created",
@@ -59,7 +48,7 @@ router.patch("/:id", (req, res) => {
     Note.updateOne({ _id: id }, { $set: req.body })
         .exec()
         .then((result) => {
-            console.log(result);
+            // console.log(result);
             res.status(200).json(result);
         })
         .catch((err) => {
@@ -74,7 +63,7 @@ router.delete("/:id", (req, res) => {
     Note.deleteOne({ _id: id })
         .exec()
         .then((result) => {
-            console.log(result);
+            // console.log(result);
             res.status(200).json(result);
         })
         .catch((err) => {

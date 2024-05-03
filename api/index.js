@@ -18,27 +18,33 @@ app.use(cors(corsOptions)); // To globally tell server to use cors anytime a req
 app.use(express.json()); // To parse incoming requests with JSON payloads. By default reads HTML
 // app.use("/notes", noteRoutes);
 
+app.all("/", function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    next();
+});
+
 app.get("/", (req, res) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Credentials", "true");
-    res.setHeader("Access-Control-Max-Age", "1800");
-    res.setHeader("Access-Control-Allow-Headers", "content-type");
-    res.setHeader(
-        "Access-Control-Allow-Methods",
-        "PUT, POST, GET, DELETE, PATCH, OPTIONS"
-    );
+    // res.setHeader("Access-Control-Allow-Origin", "*");
+    // res.setHeader("Access-Control-Allow-Credentials", "true");
+    // res.setHeader("Access-Control-Max-Age", "1800");
+    // res.setHeader("Access-Control-Allow-Headers", "content-type");
+    // res.setHeader(
+    //     "Access-Control-Allow-Methods",
+    //     "PUT, POST, GET, DELETE, PATCH, OPTIONS"
+    // );
     res.json({ message: "API works" });
 });
 
 app.get("/notes/:id", (req, res) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Credentials", "true");
-    res.setHeader("Access-Control-Max-Age", "1800");
-    res.setHeader("Access-Control-Allow-Headers", "content-type");
-    res.setHeader(
-        "Access-Control-Allow-Methods",
-        "PUT, POST, GET, DELETE, PATCH, OPTIONS"
-    );
+    // res.setHeader("Access-Control-Allow-Origin", "*");
+    // res.setHeader("Access-Control-Allow-Credentials", "true");
+    // res.setHeader("Access-Control-Max-Age", "1800");
+    // res.setHeader("Access-Control-Allow-Headers", "content-type");
+    // res.setHeader(
+    //     "Access-Control-Allow-Methods",
+    //     "PUT, POST, GET, DELETE, PATCH, OPTIONS"
+    // );
     Note.find({ uid: req.params.id }) // Find all notes
         .exec()
         .then((notes) => {
@@ -53,14 +59,14 @@ app.get("/notes/:id", (req, res) => {
 
 // POST
 app.post("/notes/", (req, res) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Credentials", "true");
-    res.setHeader("Access-Control-Max-Age", "1800");
-    res.setHeader("Access-Control-Allow-Headers", "content-type");
-    res.setHeader(
-        "Access-Control-Allow-Methods",
-        "PUT, POST, GET, DELETE, PATCH, OPTIONS"
-    );
+    // res.setHeader("Access-Control-Allow-Origin", "*");
+    // res.setHeader("Access-Control-Allow-Credentials", "true");
+    // res.setHeader("Access-Control-Max-Age", "1800");
+    // res.setHeader("Access-Control-Allow-Headers", "content-type");
+    // res.setHeader(
+    //     "Access-Control-Allow-Methods",
+    //     "PUT, POST, GET, DELETE, PATCH, OPTIONS"
+    // );
     const note = new Note({
         _id: new mongoose.Types.ObjectId(),
         title: req.body.title,
@@ -85,14 +91,14 @@ app.post("/notes/", (req, res) => {
 
 // PATCH
 app.patch("/notes/:id", (req, res) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Credentials", "true");
-    res.setHeader("Access-Control-Max-Age", "1800");
-    res.setHeader("Access-Control-Allow-Headers", "content-type");
-    res.setHeader(
-        "Access-Control-Allow-Methods",
-        "PUT, POST, GET, DELETE, PATCH, OPTIONS"
-    );
+    // res.setHeader("Access-Control-Allow-Origin", "*");
+    // res.setHeader("Access-Control-Allow-Credentials", "true");
+    // res.setHeader("Access-Control-Max-Age", "1800");
+    // res.setHeader("Access-Control-Allow-Headers", "content-type");
+    // res.setHeader(
+    //     "Access-Control-Allow-Methods",
+    //     "PUT, POST, GET, DELETE, PATCH, OPTIONS"
+    // );
     const id = req.params.id;
     Note.updateOne({ _id: id }, { $set: req.body })
         .exec()
@@ -108,14 +114,14 @@ app.patch("/notes/:id", (req, res) => {
 
 // DELETE
 app.delete("/notes/:id", (req, res) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Credentials", "true");
-    res.setHeader("Access-Control-Max-Age", "1800");
-    res.setHeader("Access-Control-Allow-Headers", "content-type");
-    res.setHeader(
-        "Access-Control-Allow-Methods",
-        "PUT, POST, GET, DELETE, PATCH, OPTIONS"
-    );
+    // res.setHeader("Access-Control-Allow-Origin", "*");
+    // res.setHeader("Access-Control-Allow-Credentials", "true");
+    // res.setHeader("Access-Control-Max-Age", "1800");
+    // res.setHeader("Access-Control-Allow-Headers", "content-type");
+    // res.setHeader(
+    //     "Access-Control-Allow-Methods",
+    //     "PUT, POST, GET, DELETE, PATCH, OPTIONS"
+    // );
     const id = req.params.id;
     Note.deleteOne({ _id: id })
         .exec()
