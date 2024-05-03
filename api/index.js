@@ -20,7 +20,23 @@ app.use(express.json()); // To parse incoming requests with JSON payloads. By de
 
 app.all("/", function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
+    res.header(
+        "Access-Control-Allow-Methods",
+        "PUT, POST, GET, DELETE, PATCH, OPTIONS"
+    );
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    next();
+});
+
+app.all("/notes/", function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header(
+        "Access-Control-Allow-Methods",
+        "PUT, POST, GET, DELETE, PATCH, OPTIONS"
+    );
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    // access-control-allow-origin,content-type
+
     next();
 });
 
