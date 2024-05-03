@@ -11,6 +11,9 @@ const app = express();
 mongoose.connect(process.env.MONGO_DB_URI);
 
 const corsOptions = {
+    origin: true,
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
     credentials: true, //access-control-allow-credentials:true
     optionSuccessStatus: 200,
 };
@@ -18,27 +21,27 @@ app.use(cors(corsOptions)); // To globally tell server to use cors anytime a req
 app.use(express.json()); // To parse incoming requests with JSON payloads. By default reads HTML
 // app.use("/notes", noteRoutes);
 
-app.all("/", function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header(
-        "Access-Control-Allow-Methods",
-        "PUT, POST, GET, DELETE, PATCH, OPTIONS"
-    );
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    next();
-});
+// app.all("/", function (req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header(
+//         "Access-Control-Allow-Methods",
+//         "PUT, POST, GET, DELETE, PATCH, OPTIONS"
+//     );
+//     res.header("Access-Control-Allow-Headers", "X-Requested-With");
+//     next();
+// });
 
-app.all("/notes/", function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header(
-        "Access-Control-Allow-Methods",
-        "PUT, POST, GET, DELETE, PATCH, OPTIONS"
-    );
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    // access-control-allow-origin,content-type
+// app.all("/notes/", function (req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header(
+//         "Access-Control-Allow-Methods",
+//         "PUT, POST, GET, DELETE, PATCH, OPTIONS"
+//     );
+//     res.header("Access-Control-Allow-Headers", "X-Requested-With");
+//     // access-control-allow-origin,content-type
 
-    next();
-});
+//     next();
+// });
 
 app.get("/", (req, res) => {
     // res.setHeader("Access-Control-Allow-Origin", "*");
