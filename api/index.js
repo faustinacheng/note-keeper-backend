@@ -13,7 +13,7 @@ mongoose.connect(process.env.MONGO_DB_URI);
 const corsOptions = {
     origin: true,
     methods: "GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE",
-    preflightContinue: false,
+    preflightContinue: true,
     credentials: true, //access-control-allow-credentials:true
     optionsSuccessStatus: 200,
 };
@@ -53,6 +53,18 @@ app.get("/", (req, res) => {
     //     "PUT, POST, GET, DELETE, PATCH, OPTIONS"
     // );
     res.json({ message: "API works" });
+});
+
+app.options("/", (req, res) => {
+    // res.setHeader("Access-Control-Allow-Origin", "*");
+    // res.setHeader("Access-Control-Allow-Credentials", "true");
+    // res.setHeader("Access-Control-Max-Age", "1800");
+    // res.setHeader("Access-Control-Allow-Headers", "content-type");
+    // res.setHeader(
+    //     "Access-Control-Allow-Methods",
+    //     "PUT, POST, GET, DELETE, PATCH, OPTIONS"
+    // );
+    res.status(200).send();
 });
 
 app.get("/notes/:id", (req, res) => {
