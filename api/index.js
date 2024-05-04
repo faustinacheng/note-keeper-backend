@@ -12,7 +12,7 @@ mongoose.connect(process.env.MONGO_DB_URI);
 
 const corsOptions = {
     origin: true,
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    methods: "GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE",
     preflightContinue: false,
     credentials: true, //access-control-allow-credentials:true
     optionSuccessStatus: 200,
