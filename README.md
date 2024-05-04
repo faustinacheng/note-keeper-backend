@@ -22,6 +22,8 @@ Create a `.env` file in the project directory containing the following key:
 
 - `MONGO_DB_URI`: with the URI to your MongoDB database
 
+(Already created in the repo for grading purposes)
+
 
 
 In the project directory, you can run:
