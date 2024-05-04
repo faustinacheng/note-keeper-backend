@@ -16,6 +16,7 @@ const corsOptions = {
     preflightContinue: true,
     credentials: true, //access-control-allow-credentials:true
     optionsSuccessStatus: 200,
+    maxAge: 3600,
 };
 app.use(cors(corsOptions)); // To globally tell server to use cors anytime a request is made to allow cross origin requests
 app.use(express.json()); // To parse incoming requests with JSON payloads. By default reads HTML
@@ -64,7 +65,8 @@ app.options("/", (req, res) => {
     //     "Access-Control-Allow-Methods",
     //     "PUT, POST, GET, DELETE, PATCH, OPTIONS"
     // );
-    res.status(200).send();
+    res.json({ message: "API works" });
+    // res.status(200).send();
 });
 
 app.get("/notes/:id", (req, res) => {
