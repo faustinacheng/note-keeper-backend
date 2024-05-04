@@ -76,6 +76,8 @@ app.get("/notes/:id", (req, res) => {
         });
 });
 
+app.options("/notes/", cors(corsOptions));
+
 // POST
 app.post("/notes/", (req, res) => {
     // res.setHeader("Access-Control-Allow-Origin", "*");
