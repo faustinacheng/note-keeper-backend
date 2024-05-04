@@ -11,7 +11,7 @@ const app = express();
 mongoose.connect(process.env.MONGO_DB_URI);
 
 const corsOptions = {
-    origin: true,
+    origin: "https://keeper-fc.vercel.app",
     methods: "GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE",
     preflightContinue: false,
     credentials: true, //access-control-allow-credentials:true
