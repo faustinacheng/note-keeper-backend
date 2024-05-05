@@ -16,6 +16,10 @@ The server is set up to use the `cors` and `express.json` middleware. The `cors`
 
 ### Setup
 
+**Requirements:**
+
+- Node.js installed (If not download it [here](https://nodejs.org/en/download/)).
+
 To install the dependencies listed in `package.json`, run `npm install`.
 
 Create a `.env` file in the project directory containing the following key:
@@ -44,6 +48,8 @@ Runs the server at http://localhost:8888 with nodemon to restart automatically u
 Deployed on Vercel: https://note-backend-chi.vercel.app
 
 Vercel deployment configured to only handle cross-origin requests from "[https://keeper-fc.vercel.app"](vscode-file://vscode-app/Applications/Visual Studio Code.app/Contents/Resources/app/out/vs/code/electron-sandbox/workbench/workbench.html).
+
+Video Demo: https://youtu.be/ry--s5_ghmg
 
 ## API Endpoints
 
